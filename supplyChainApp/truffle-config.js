@@ -1,11 +1,11 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-var mnemonic = "YOUR MNEMONIC FROM YOUR WALLET (MetaMask)";
+var mnemonic = "0x3ECC53F7Ba45508483379bd76989A3003E6cbf09";
 
 module.exports = {
   networks: {
    development: {
     host: "127.0.0.1",
-    port: 7545,
+    port: 8545,
     network_id: "*"
    },
    ropsten: {

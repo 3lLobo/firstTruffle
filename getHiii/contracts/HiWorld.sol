@@ -3,10 +3,14 @@ pragma solidity >=0.4.22 <0.9.0;
 
 contract HiWorld {
 
-    function checkOwner(string calldata caller) private view returns (bool) {
-        require(msg.sender == caller);
-        revert();
-        assert(msg.sender == caller);
+    address public owner = msg.sender;
+
+
+    function checkOwner() private view returns (bool) {
+        require(msg.sender == owner);
+        // revert();
+        assert(msg.sender == owner);
+        return true;
     }
 
     

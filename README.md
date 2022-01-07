@@ -35,6 +35,7 @@ Useful blocqchain links:
  - [Browser IDE](https://remix.ethereum.org/)
 
 On remix, choose __injected Web3__ and Meta will pop up.
+One Wei is the smallest breakdown of ether, can't go smaller than Wei.
 
 
 ## Running Tests

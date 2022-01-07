@@ -17,6 +17,10 @@ contract SimpleStorage {
 
     }
 
+    function retrieve() public view returns(string memory) {
+        return myName2;        
+    }
+
     function retrive_view() public view returns(bytes32) {
         return myName;
 

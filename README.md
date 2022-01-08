@@ -35,8 +35,10 @@ Useful blocqchain links:
  - [Browser IDE](https://remix.ethereum.org/)
 
 On remix, choose __injected Web3__ and Meta will pop up.
+
 One Wei is the smallest breakdown of ether, can't go smaller than Wei.
 
+To get data, a contract address has to be provided. To get the current eth price, call the contract address provided by [chainlink](https://data.chain.link/ethereum/mainnet/crypto-usd).
 
 ## Running Tests
 

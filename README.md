@@ -40,6 +40,11 @@ One Wei is the smallest breakdown of ether, can't go smaller than Wei.
 
 To get data, a contract address has to be provided. To get the current eth price, call the contract address provided by [chainlink](https://data.chain.link/ethereum/mainnet/crypto-usd).
 
+__this__ returns the contracts own address. Calling adress.balance retruns the accounts funds in wei. Constructor( is called when the contract is deployed, similar to init().
+
+__modifier__ can be used to condition functions. Needs _; as last line.
+
+
 ## Running Tests
 
 To run tests, run the following command

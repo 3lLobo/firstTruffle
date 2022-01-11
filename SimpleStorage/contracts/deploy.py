@@ -1,4 +1,4 @@
-"""Deployment script
+"""Deployment script.
 """
 import solcx
 import json

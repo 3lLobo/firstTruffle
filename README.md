@@ -54,6 +54,15 @@ solcx.compile_standard
 This will compile the provided __.sol__ file and return the logs.
 
 
+ - contract requires: abi, bytecode
+ - build Transaction requires: contract, chainId, address, nonce, gassPrice
+ - sign Transaction requires: transaction, privateKey
+ - --> then: send_raw_transaction
+ - wait for transaction receipt return the transaction information, most important the contract address
+
+
+
+
 <!-- .markdown-body {
   --md-code-background: #e3dcef;
   --md-code-text: #4a2b7b;

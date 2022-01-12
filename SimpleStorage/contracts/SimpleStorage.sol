@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.6.0;
+pragma solidity >=0.8.0;
 
 contract SimpleStorage {
 
@@ -21,13 +21,13 @@ contract SimpleStorage {
         return myName2;        
     }
 
-    function retrive_view() public view returns(bytes32) {
+    function retrieve_view() public view returns(bytes32) {
         return myName;
 
     }
 
-    function retrive_view(bytes32 _myBytes) public pure {
-        _myBytes;
+    function retrive_view(bytes32 _myBytes) public pure returns(bytes32) {
+        return _myBytes;
 
     }
 

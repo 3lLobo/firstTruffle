@@ -89,9 +89,9 @@ tx_recipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 
 # Work with the contract
 ss_contract = w3.eth.contract(address=tx_recipt.contractAddress, abi=abi)
-# ic(ss_contract.functions.retrieve_view().call())
+ic(ss_contract.functions.retrieve_view().call())
 
-store_tx = ss_contract.functions.i_store(b"11").buildTransaction(
+store_tx = ss_contract.functions.i_store(b"11Lobo").buildTransaction(
     {
         "chainId": chain_id,
         "from": myaddress,
@@ -99,7 +99,9 @@ store_tx = ss_contract.functions.i_store(b"11").buildTransaction(
         "gasPrice": 20000000000,
     }
 )
-isgn_store = w3.eth.sign_transaction(store_tx, priv_key)
-send_store = w3.eth.send_raw_transaction(store_tx.rawTransaction)
+sign_store = w3.eth.account.sign_transaction(store_tx, priv_key)
+send_store = w3.eth.send_raw_transaction(sign_store.rawTransaction)
 store_reciept = w3.eth.wait_for_transaction_receipt(send_store)
-ic(store_reciept)
+# ic(store_reciept)
+
+ic(ss_contract.functions.retrieve_view().call())

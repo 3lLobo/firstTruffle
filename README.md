@@ -57,11 +57,20 @@ This will compile the provided __.sol__ file and return the logs.
  - contract requires: abi, bytecode
  - build Transaction requires: contract, chainId, address, nonce, gassPrice
  - sign Transaction requires: transaction, privateKey
- - --> then: send_raw_transaction
+ - -> then: send_raw_transaction
  - wait for transaction receipt return the transaction information, most important the contract address
 
 
+### Ganache
 
+To install ganache cli do the following:
+ - install nodejs
+ - install npm
+ - npm install --global yarn
+ - yarn global add ganache-cli
+ - ganache-cli --deterministic for always the same addresses
+
+Ganache hides between a bunch of other frameworks. Think ```global``` avoids it installing only for the current project.
 
 <!-- .markdown-body {
   --md-code-background: #e3dcef;

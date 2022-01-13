@@ -52,11 +52,11 @@ bytecode = comp_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"][
 abi = comp_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 
 # Web3
-w3 = Web3(Web3.HTTPProvider("HTTP://172.29.224.1:7545"))
-chain_id = 1337
-myaddress = "0x723Ef39B47f8A7EEF024218E8dEeC49AAb0bf925"
-second_address = "0x44abcdaf50e7cf79aaadF860e7c2C89BF8b5864d"
-# priv_key = "38b2a733cdc35350ccac06c61dbf8a3186b47f747c3a0952f5d00426315e3dbf"
+endpoint_html = os.getenv("CHAIN_HTML")
+w3 = Web3(Web3.HTTPProvider(endpoint_html))
+chain_id = int(os.getenv("CHAIN_ID"))
+myaddress = os.getenv("ETH_ADRS")
+# second_address = "0x44abcdaf50e7cf79aaadF860e7c2C89BF8b5864d"
 priv_key = os.getenv("PRIV_KEY")
 
 # Create contract

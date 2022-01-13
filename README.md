@@ -33,6 +33,7 @@ Useful blocqchain links:
  - [Rigby testnet explorer](https://rinkeby.etherscan.io/)
  - [Gas indicator](https://ethgasstation.info/)
  - [Browser IDE](https://remix.ethereum.org/)
+ - [request fake moneyyy - Rinkeby Ether](https://docs.chain.link/docs/link-token-contracts/#rinkeby)
 
 On remix, choose __injected Web3__ and Meta will pop up.
 
@@ -60,6 +61,23 @@ This will compile the provided __.sol__ file and return the logs.
  - -> then: send_raw_transaction
  - wait for transaction receipt return the transaction information, most important the contract address
 
+Alternative: use brownie. 
+```
+pip install eth-brownie
+```
+Then init the project by cding into the parent folder and call brownie init.
+store your solidity contracts in contracts folder and run 
+
+```
+brownie compile
+```
+
+Next write your python app in scripts and run them with 
+```
+brownie run scripts/{}.py --network {}
+```
+Choose wich network to interact with. By default brownie launches a ganache dev chain.
+
 
 ### Ganache
 
@@ -81,12 +99,13 @@ Ganache hides between a bunch of other frameworks. Think ```global``` avoids it 
 
 ## Running Tests
 
-To run tests, run the following command
-
+For the brownie project, which is the only one with test so far, run:
 ```bash
-  truffle deploy
+  brownie test
 ```
+brownie test is based on pytest and accepts the very same arguments.
 
+__I'm hangrey now!__
 
 ## Appendix
 

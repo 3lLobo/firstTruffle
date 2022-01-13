@@ -33,6 +33,7 @@ Useful blocqchain links:
  - [Rigby testnet explorer](https://rinkeby.etherscan.io/)
  - [Gas indicator](https://ethgasstation.info/)
  - [Browser IDE](https://remix.ethereum.org/)
+ - [request fake moneyyy - Rinkeby Ether](https://docs.chain.link/docs/link-token-contracts/#rinkeby)
 
 On remix, choose __injected Web3__ and Meta will pop up.
 
@@ -60,6 +61,31 @@ This will compile the provided __.sol__ file and return the logs.
  - -> then: send_raw_transaction
  - wait for transaction receipt return the transaction information, most important the contract address
 
+Alternative: use brownie. 
+```
+pip install eth-brownie
+```
+Then init the project by cd-ing into the parent folder and call brownie init.
+store your solidity contracts in contracts folder and run 
+
+```
+brownie compile
+```
+
+Next write your python app in scripts and run them with 
+```
+brownie run scripts/{}.py --network {}
+```
+Choose which network to interact with. By default brownie launches a ganache dev chain.
+Store env Variables in a .env file then create a __brownie-config.yaml__ file and add ```dotenv: .env```. 
+A custom wallet can be added to brownie with ```brownie accounts new {name}``` or in the yaml file:
+
+```
+wallets:
+  from_key: ${PRIV_KEY}
+```
+
+To deloy contracts on non-local blockchains, we need to specify ``` WEB3_INFURA_PROJECT_ID```. A project can be created on (Infura)[https://infura.io/] and the project ID save in the __.env__ file.
 
 ### Ganache
 
@@ -81,12 +107,13 @@ Ganache hides between a bunch of other frameworks. Think ```global``` avoids it 
 
 ## Running Tests
 
-To run tests, run the following command
-
+For the brownie project, which is the only one with test so far, run:
 ```bash
-  truffle deploy
+  brownie test
 ```
+brownie test is based on pytest and accepts the very same arguments. Add ```-Pdb``` to launch the debuger on crash.
 
+__I'm hangrey now!__
 
 ## Appendix
 

@@ -23,5 +23,4 @@ def add_mate(name, years):
 def main():
     """Main app"""
     mate = "Nuka <3"
-    years = 111
-    add_mate(mate, years=years)
+    years = 111 add_mate(mate, years=years)

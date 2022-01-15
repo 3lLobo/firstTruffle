@@ -48,7 +48,7 @@ __this__ returns the contracts own address. Calling adress.balance retruns the a
 __modifier__ can be used to condition functions. Needs _; as last line.
 
 ### in Python
-
+ 
 ```python
 solcx.compile_standard
 ```
@@ -85,7 +85,9 @@ wallets:
   from_key: ${PRIV_KEY}
 ```
 
-To deloy contracts on non-local blockchains, we need to specify ``` WEB3_INFURA_PROJECT_ID```. A project can be created on (Infura)[https://infura.io/] and the project ID save in the __.env__ file.
+To deloy contracts on non-local blockchains, we need to specify ``` WEB3_INFURA_PROJECT_ID```. A project can be created on [Infura](https://infura.io/) and the project ID save in the __.env__ file.
+
+
 
 ### Ganache
 
@@ -107,7 +109,7 @@ Ganache hides between a bunch of other frameworks. Think ```global``` avoids it 
 
 ## Running Tests
 
-For the brownie project, which is the only one with test so far, run:
+For the brownie project, which is the only one with test so far. Place the tests in the test subfolder and run:
 ```bash
   brownie test
 ```

@@ -20,7 +20,7 @@ Here some badges:
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/3lLobo/firstTruffle?color=lightblue&style=for-the-badge)
 
 
-![Lines of code](https://img.shields.io/tokei/lines/github/3lLobo/firstTruffle&style=for-the-badge)
+![Lines of code](https://img.shields.io/tokei/lines/github/3lLobo/firstTruffle?style=for-the-badge)
 
 
 ## Authors

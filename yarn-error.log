@@ -1,0 +1,58 @@
+Arguments: 
+  /usr/bin/node /usr/local/bin/yarn add v1.22.5
+
+PATH: 
+  /home/wolf/.cargo/bin:/home/wolf/miniconda3/envs/sol/bin:/home/wolf/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/compiler:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/Program Files (x86)/Pulse Secure/VC142.CRT/X64:/mnt/c/Program Files (x86)/Pulse Secure/VC142.CRT/X86:/mnt/c/Program Files/CMake/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Git/mingw64/bin:/mnt/c/Program Files/Git/usr/bin:/mnt/c/Program Files/Geth:/mnt/c/Program Files/nodejs:/mnt/c/Program Files/dotnet:/mnt/c/Users/eldas/miniconda3:/mnt/c/Users/eldas/miniconda3/Library/mingw-w64/bin:/mnt/c/Users/eldas/miniconda3/Library/usr/bin:/mnt/c/Users/eldas/miniconda3/Library/bin:/mnt/c/Users/eldas/miniconda3/Scripts:/mnt/c/Users/eldas/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/eldas/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/eldas/AppData/Roaming/npm:/mnt/c/Users/eldas/.dotnet/tools:/home/wolf/.local/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  10.19.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/v1.22.5: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:67029:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140883:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141855:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141777:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1145:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "dependencies": {
+      "@chainlink/contracts": "^0.3.1",
+      "solc": "^0.8.11"
+    },
+    "name": "firsttruffle",
+    "description": "A collection of projects as I learn how to write smart contract and interact with the ETH blocqchain.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/3lLobo/firstTruffle.git"
+    },
+    "author": "wolf",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/3lLobo/firstTruffle/issues"
+    },
+    "homepage": "https://github.com/3lLobo/firstTruffle#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

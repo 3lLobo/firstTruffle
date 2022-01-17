@@ -78,11 +78,21 @@ brownie run scripts/{}.py --network {}
 ```
 Choose which network to interact with. By default brownie launches a ganache dev chain.
 Store env Variables in a .env file then create a __brownie-config.yaml__ file and add ```dotenv: .env```. 
-A custom wallet can be added to brownie with ```brownie accounts new {name}``` or in the yaml file:
+A custom wallet can be added to brownie with ```brownie accounts new {name}```. Second option is to declare it in the yaml file. Here we also define all dependencies and where to find them on github: 
 
 ```
 wallets:
   from_key: ${PRIV_KEY}
+
+dependencies:
+  #  - <org/repo>@<version>
+  - smartcontractkit/chainlink-brownie-contracts@0.3.1
+
+compiler:
+  solc:
+    remappings:
+      - <local_refferencec>=<dependency>
+      - '@chainlink=smartcontractkit/chainlink-brownie-contracts@0.3.1'
 ```
 
 To deloy contracts on non-local blockchains, we need to specify ``` WEB3_INFURA_PROJECT_ID```. A project can be created on [Infura](https://infura.io/) and the project ID save in the __.env__ file.

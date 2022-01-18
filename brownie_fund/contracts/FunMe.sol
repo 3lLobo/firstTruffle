@@ -3,20 +3,23 @@ pragma solidity ^0.8.0;
 
 import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-
+// import "@chainlink-mix/contracts/test/MockV3Aggregator.sol";
 
 contract FundMe {
     // using SafeMathChainlink for unit256;
 
-    address private ethContract = 0x9326BFA02ADD2366b30bacB125260Af641031331;
+    // address private ethContract = 0x9326BFA02ADD2366b30bacB125260Af641031331;
 
     mapping(address => uint256) public addressToAmountFunded;
 
     address private owner;
     address[] public funders;
+    AggregatorV3Interface public priceFeed;
 
-    constructor() {
+    constructor(address _priceFeed) {
         owner = msg.sender;
+        priceFeed = AggregatorV3Interface(_priceFeed);
+
     }
 
     function fund() public payable {
@@ -46,7 +49,6 @@ contract FundMe {
     }
 
     function getPrice() public view returns (uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(ethContract);
         (
             uint80 roundId,
             int256 answer,
@@ -59,7 +61,6 @@ contract FundMe {
     }
 
     function getVersion() public view returns (uint256) {
-        AggregatorV3Interface priceFeed = AggregatorV3Interface(ethContract);
         return priceFeed.version();
     }
 

@@ -65,13 +65,13 @@ This will compile the provided __.sol__ file and return the logs.
  - wait for transaction receipt return the transaction information, most important the contract address
 
 Alternative: use brownie. 
-```
+```bash
 pip install eth-brownie
 ```
 Then init the project by cd-ing into the parent folder and call brownie init.
 store your solidity contracts in contracts folder and run 
 
-```
+```bash
 brownie compile
 ```
 
@@ -81,9 +81,9 @@ brownie run scripts/{}.py --network {}
 ```
 Choose which network to interact with. By default brownie launches a ganache dev chain.
 Store env Variables in a .env file then create a __brownie-config.yaml__ file and add ```dotenv: .env```. 
-A custom wallet can be added to brownie with ```brownie accounts new {name}```. Second option is to declare it in the yaml file. Here we also define all dependencies and where to find them on github: 
+A custom wallet can be added to brownie with ```brownie accounts new {name}```. Second option is to declare it in the yaml file. Here we also define all dependencies and where to find them on github. For nwtwork specifiq variable, those variables have to be defined after the specifig network ID: 
 
-```
+```yaml
 wallets:
   from_key: ${PRIV_KEY}
 
@@ -96,9 +96,13 @@ compiler:
     remappings:
       - <local_refferencec>=<dependency>
       - '@chainlink=smartcontractkit/chainlink-brownie-contracts@0.3.1'
+networks:
+  <name/ID>: 
+    eth_feed: '0x9326BFA02ADD2366b30bacB125260Af641031331'
+    verify: True
 ```
 
-To deloy contracts on non-local blockchains, we need to specify ``` WEB3_INFURA_PROJECT_ID```. A project can be created on [Infura](https://infura.io/) and the project ID save in the __.env__ file.
+To deloy contracts on non-local blockchains, we need to specify ```WEB3_INFURA_PROJECT_ID```. A project can be created on [Infura](https://infura.io/) and the project ID save in the __.env__ file.
 
 
 
@@ -119,6 +123,11 @@ Ganache hides between a bunch of other frameworks. Think ```global``` avoids it 
   --md-code-tabs: #c6b8dd;
   --md-code-radius: 4px;
 } -->
+
+### Ganache-UI
+
+The ganache UI is the isual interface of Ganache. Since we are using Windows11 and wsl-ubuntu, the UI cannot be accesed directly. First add an Windows firewall exception for wsl on port 8545. In Ganache UI choose the vEthernet(WSL) host as server. In brownie add a custom network under Ethereum with the Ganache UI ip address as host and its networkID as chanid.
+Now all changes to local Ganache blockchain persist and can be used for testing. 
 
 ## Running Tests
 

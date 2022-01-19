@@ -23,4 +23,6 @@ networks:
     verify: True
   developement:
     verify: False
+  ganachewin11:
+    verify: False
    

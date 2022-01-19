@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 
 import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
 // import "@chainlink-mix/contracts/test/MockV3Aggregator.sol";
 
 contract FundMe {
@@ -19,12 +20,22 @@ contract FundMe {
     constructor(address _priceFeed) {
         owner = msg.sender;
         priceFeed = AggregatorV3Interface(_priceFeed);
+    }
 
+    function getEntranceFee() public view returns (uint256) {
+        // minimum fee in USD
+        uint256 minUSD = 50 * 10**18;
+        uint256 price = getPrice();
+        uint256 precision = 1 * 10**18;
+        return (minUSD * precision) / price;
     }
 
     function fund() public payable {
         uint256 minUSD = 50 * 10**18;
-        require(getConversion(msg.value) >= minUSD, "Send more!");
+        require(
+            getConversionRate(msg.value) >= minUSD,
+            "You need to spend more ETH!"
+        );
         addressToAmountFunded[msg.sender] += msg.value;
         funders.push(msg.sender);
     }
@@ -39,13 +50,19 @@ contract FundMe {
         funders = new address[](0);
     }
 
-    function getConversion(uint256 _val) public view returns (uint256) {
+    function getConversionRate(uint256 ethAmount)
+        public
+        view
+        returns (uint256)
+    {
         uint256 ethPrice = getPrice();
-        return wei2usd((_val * ethPrice) / 10e10);
+        uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1000000000000000000;
+        // the actual ETH/USD conversation rate, after adjusting the extra 0s.
+        return ethAmountInUsd;
     }
 
     function wei2usd(uint256 _val) public pure returns (uint256) {
-        return _val / 10e18;
+        return _val / 10000000000;
     }
 
     function getPrice() public view returns (uint256) {

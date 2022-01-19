@@ -1,10 +1,13 @@
 """Helper functions
 """
 
-from brownie import MockV3Aggregator, accounts, network, config
+from brownie import MockV3Aggregator, accounts, network, config, Contract
 from icecream import ic
 from web3 import Web3
 
+DECIMALS = 8
+START_PRICE = 10e11
+LOCAL_BLOCKCHAINS = ['development', 'ganachewin11']
 
 def get_account() -> str:
     """Checks for network and returns account public key.
@@ -13,7 +16,7 @@ def get_account() -> str:
     """
     net = network.show_active()
     print("WTF mate?! You're sailing on the {} networq!".format(net))
-    if net == "development":
+    if net in LOCAL_BLOCKCHAINS:
         ic(accounts[0])
         acc = accounts[0]
     else:
@@ -29,17 +32,16 @@ def get_feed_address() -> str:
         str: price feed address
     """
     net = network.show_active()
-    if net == "development":
+    if net in LOCAL_BLOCKCHAINS:
         print("Deploying Mocks..")
-        eth_sum = Web3.toWei(2000, "ether")
-        if len(MockV3Aggregator) > 0:
+        # eth_sum = Web3.toWei(2000, "ether")
+        if len(MockV3Aggregator) >= 0:
             MockV3Aggregator.deploy(
-                18,
-                eth_sum,
+                DECIMALS,
+                START_PRICE,
                 {"from": accounts[0]},
             )
-        ic(len(MockV3Aggregator))
-        feed = MockV3Aggregator.address
+        feed = MockV3Aggregator[-1].address
     else:
         feed = config["networks"][net]["eth_feed"]
     return feed

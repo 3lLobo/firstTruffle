@@ -6,19 +6,24 @@ from icecream import ic
 from web3 import Web3
 
 DECIMALS = 8
-START_PRICE = 10e11
-LOCAL_BLOCKCHAINS = ['development', 'ganachewin11']
+START_PRICE = 20e11
+LOCAL_BLOCKCHAINS = ["development", "ganachewin11"]
+FORKED_LOCAL_CHAIN = ["mainnet-fork", "dev-fork"]
 
-def get_account() -> str:
+
+def get_account(acc_ind: int = 0) -> str:
     """Checks for network and returns account public key.
     if on Ganache, the native generated first account ist returned.
     On testnet, the account stored in .env.
+
+    Args:
+        acc_ind[int]: index of the local account. Default is the first one.
     """
     net = network.show_active()
     print("WTF mate?! You're sailing on the {} networq!".format(net))
-    if net in LOCAL_BLOCKCHAINS:
-        ic(accounts[0])
-        acc = accounts[0]
+    if net in LOCAL_BLOCKCHAINS + FORKED_LOCAL_CHAIN:
+        ic(accounts[acc_ind])
+        acc = accounts[acc_ind]
     else:
         acc = accounts.add(config["wallets"]["from_key"])
     return acc

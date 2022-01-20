@@ -1,4 +1,4 @@
-dotenv: .env
+# dotenv: .env
 
 dependencies:
   #  - <org/repo>@<version>
@@ -10,9 +10,6 @@ compiler:
     remappings:
       - '@chainlink=smartcontractkit/chainlink-brownie-contracts@0.3.1'
       - '@chainlink-mix=smartcontractkit/chainlink-mix@2.3.0'
-
-wallets:
-  from_key: ${PRIV_KEY}
 
 networks:
   default: development
@@ -32,4 +29,3 @@ networks:
     verify: False
   ganachewin11:
     verify: False
-   

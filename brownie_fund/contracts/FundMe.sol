@@ -26,8 +26,8 @@ contract FundMe {
         // minimum fee in USD
         uint256 minUSD = 50 * 10**18;
         uint256 price = getPrice();
-        uint256 precision = 1 * 10**18;
-        return (minUSD * precision) / price;
+        uint256 precision = 10**18;
+        return minUSD * precision / price;
     }
 
     function fund() public payable {
@@ -35,6 +35,7 @@ contract FundMe {
         require(
             getConversionRate(msg.value) >= minUSD,
             "You need to spend more ETH!"
+            // string(bytes(getConversionRate(msg.value)))
         );
         addressToAmountFunded[msg.sender] += msg.value;
         funders.push(msg.sender);
@@ -56,7 +57,7 @@ contract FundMe {
         returns (uint256)
     {
         uint256 ethPrice = getPrice();
-        uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1000000000000000000;
+        uint256 ethAmountInUsd = (ethPrice * ethAmount) / 10**18;
         // the actual ETH/USD conversation rate, after adjusting the extra 0s.
         return ethAmountInUsd;
     }
@@ -73,7 +74,7 @@ contract FundMe {
             uint256 updatedAt,
             uint80 answeredInRound
         ) = priceFeed.latestRoundData();
-        return uint256(answer * 10e10);
+        return uint256(answer * 10**10);
         // return uint256(11);
     }
 

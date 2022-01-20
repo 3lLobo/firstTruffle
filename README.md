@@ -8,13 +8,13 @@ Here some badges:
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?style=for-the-badge)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
-![GitHub language count](https://img.shields.io/github/languages/count/3lLobo/firstTruffle?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/3lLobo/firstTruffle?style=for-the-badge&color=magenta)
 
-![GitHub top language](https://img.shields.io/github/languages/top/3lLobo/firstTruffle?style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/3lLobo/firstTruffle?style=for-the-badge&color=red)
+
+![Lines of code](https://img.shields.io/tokei/lines/github/3lLobo/firstTruffle?style=for-the-badge&color=orange)
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/3lLobo/firstTruffle?color=lightblue&style=for-the-badge)
-
-![Lines of code](https://img.shields.io/tokei/lines/github/3lLobo/firstTruffle?style=for-the-badge)
 
 ## Authors
 
@@ -132,6 +132,10 @@ For the brownie project, which is the only one with test so far. Place the tests
 ```
 
 brownie test is based on pytest and accepts the very same arguments. Add `-Pdb` to launch the debuger on crash.
+
+### Mainnet-forks
+
+In certain cases, we need to test code which depends on previously deployed contracts. Use (__alchemy__)[https://dashboard.alchemyapi.io/] to create a fork of the Ethereum mainnet
 
 **I'm hangrey now!**
 

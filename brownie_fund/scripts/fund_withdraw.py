@@ -10,7 +10,12 @@ def fund():
     fundme = FundMe[-1]
     acc = get_account()
     e_fee = fundme.getEntranceFee()
-    ic(Wei(e_fee).to('ether'))
+    print(
+        "Funding: ETH {:.3} or USD {:.3}".format(
+            Wei(e_fee).to("ether"),
+            fund.getConversionRate(e_fee) / 10 ** 18,
+        ),
+    )
     fundme.fund({"from": acc, "value": 10000 * e_fee})
     print("Your account balance is:", Wei(acc.balance()).to('ether'))
 

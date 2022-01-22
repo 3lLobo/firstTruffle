@@ -43,6 +43,10 @@ To get data, a contract address has to be provided. To get the current eth price
 
 **modifier** can be used to condition functions. Needs \_; as last line.
 
+**constructor** gets called at the start/deployment of the contract. Like init in python.
+
+**enum** creates an case enumerator. Useful for state changes.
+
 ### in Python
 
 ```python
@@ -135,7 +139,7 @@ brownie test is based on pytest and accepts the very same arguments. Add `-Pdb` 
 
 ### Mainnet-forks
 
-In certain cases, we need to test code which depends on previously deployed contracts. Use (__alchemy__)[https://dashboard.alchemyapi.io/] to create a fork of the Ethereum mainnet
+In certain cases, we need to test code which depends on previously deployed contracts. Use (**alchemy**)[https://dashboard.alchemyapi.io/] to create a fork of the Ethereum mainnet
 
 **I'm hangrey now!**
 

@@ -7,12 +7,15 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 
 contract Lottery is VRFConsumerBase, Ownable {
     address[] public victims;
+    address payable public recentWinner;
     uint256 public usdFee;
+    uint256 public randomness;
     AggregatorV3Interface internal priceFeed;
+    event RequestedRandomness(bytes32 requestId);
 
     enum LOT_STATE {
-        OPEN,
         CLOSED,
+        OPEN,
         CALC
     }
 
@@ -20,13 +23,13 @@ contract Lottery is VRFConsumerBase, Ownable {
     uint256 public fee;
     bytes32 public keyHash;
 
-    constructor(
+    constructor (
         address _feedAddress,
         address _vrfFeed,
         address _link,
         uint256 _fee,
         bytes32 _keyHash
-    ) VRFConsumerBase(_vrfFeed, _link) {
+    ) public VRFConsumerBase(_vrfFeed, _link) {
         usdFee = 50 * (10**18);
         priceFeed = AggregatorV3Interface(_feedAddress);
         lot_state = LOT_STATE.CLOSED;
@@ -37,7 +40,7 @@ contract Lottery is VRFConsumerBase, Ownable {
     function enter() public payable {
         // Enter the lottery
         require(lot_state == LOT_STATE.OPEN);
-        require(msg.value >= usdFee);
+        require(msg.value >= getEntranceFee());
         victims.push(msg.sender);
     }
 
@@ -61,15 +64,32 @@ contract Lottery is VRFConsumerBase, Ownable {
         // pseudo_rand = uint256(keccak256(abi.encodePacked(nonce, msg.sender, block.difficulty, block.timestamp ))) % victims.lenght;
         lot_state = LOT_STATE.CALC;
         bytes32 requestId = requestRandomness(keyHash, fee);
+        emit RequestedRandomness(requestId);
     }
 
-    function fulfillRandomness(bytes32 _reqId, uint256 _randomness)
+    function fulfillRandomness(bytes32 _requestId, uint256 _randomness)
         internal
         override
     {
         require(lot_state == LOT_STATE.CALC);
         require(_randomness > 0);
+        require(victims.length > 0);
+        uint256 idxWinner = _randomness % victims.length;
+        recentWinner = payable(victims[idxWinner]);
+        recentWinner.transfer(address(this).balance);
+        // reset
+        victims = new address[](0);
+        randomness = _randomness;
+        lot_state = LOT_STATE.CLOSED;
     }
+
+    // function fulfillRandomness(bytes32 _requestId, uint256 _randomness)
+    //     internal
+    //     override
+    // {
+    //     require(lot_state == LOT_STATE.CALC);
+    //     require(_randomness > 0);
+    // }
 
     function getEthPrice() public view returns (int256) {
         // Get and return the current Eth price in Usd.

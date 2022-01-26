@@ -7,6 +7,11 @@
   "resolved" "https://registry.npmjs.org/@chainlink/contracts/-/contracts-0.3.1.tgz"
   "version" "0.3.1"
 
+"@openzeppelin/contracts@^4.4.2":
+  "integrity" "sha512-NyJV7sJgoGYqbtNUWgzzOGW4T6rR19FmX1IJgXGdapGPWsuMelGJn9h03nos0iqfforCbCB0iYIR0MtIuIFLLw=="
+  "resolved" "https://registry.npmjs.org/@openzeppelin/contracts/-/contracts-4.4.2.tgz"
+  "version" "4.4.2"
+
 "balanced-match@^1.0.0":
   "integrity" "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"

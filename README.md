@@ -139,9 +139,23 @@ brownie test is based on pytest and accepts the very same arguments. Add `-Pdb` 
 
 ### Mainnet-forks
 
-In certain cases, we need to test code which depends on previously deployed contracts. Use (**alchemy**)[https://dashboard.alchemyapi.io/] to create a fork of the Ethereum mainnet
+In certain cases, we need to test code which depends on previously deployed contracts. Use [**alchemy**](https://dashboard.alchemyapi.io/) to create a fork of the Ethereum mainnet
 
-**I'm hangrey now!**
+
+### Ganache-Local
+
+To run test locally, external contracts need to be deployed as mockups. These mockups can generally be foung in the ```test``` folder under contracts in the original project repo.
+
+
+## NFTs & Tokens
+
+Choose a standard, stick to the input and output, customize and give it a meaning, done!
+Here are some ERC standards:
+`
+https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token
+`
+
+Deploy the NFT data on [IPFS](https://ipfs.io/) and link it through a URL in the URI, which is deployed on the blockchain.
 
 ## Appendix
 

@@ -14,10 +14,12 @@ def test_advanced_nft():
     # Act
     nft, tx = deploy_adv_nft('test_uri.json')
     req_id = tx.events['requestedCollectable']['requestId']
+    req_acc = tx.events['requestedCollectable']['requester']
 
     # Assert
     assert nft.tokenCount() == 1
     assert nft.requestId2Sender(req_id) == acc
+    assert req_acc == acc
 
     rdm_n = 111
     vrf = get_contract('vrf')

@@ -8,3 +8,7 @@ Steps:
 
   
 NFTs can be displayed and traded on NFT platforms like [Opensea](https://opensea.io/).
+
+Upload both image/data and metadata/json to ipfs or pinata.
+Use the URL in the URI
+Use the setUri function of our contract

@@ -7,6 +7,7 @@ from brownie import (
     MockV3Aggregator,
     VRFCoordinatorMock,
     LinkToken,
+    AdvancedNFT,
     accounts,
     network,
     interface,

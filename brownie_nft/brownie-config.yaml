@@ -4,26 +4,24 @@ dependencies:
   #  - <org/repo>@<version>
   - smartcontractkit/chainlink-brownie-contracts@0.3.1
   - smartcontractkit/chainlink-mix@2.3.0
-  - OpenZeppelin/openzeppelin-contracts@4.4.0
+  - OpenZeppelin/openzeppelin-contracts@4.4.1
 
 compiler:
   solc:
     remappings:
       - '@chainlink=smartcontractkit/chainlink-brownie-contracts@0.3.1'
       - '@chainlink-mix=smartcontractkit/chainlink-mix@2.3.0'
-      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.4.0'
+      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.4.1'
 
 wallets:
   from_key: ${PRIV_KEY}
 
 networks:
   default: development
-  dev-fork: 
-    eth_feed: '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419'
-    verify: False
-    weth_token: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
   mainnet-fork: 
     eth_feed: '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419'
+    link: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
+    vrf: '0xf0d54349aDdcf704F77AE15b96510dEA15cb7952'
     verify: False
   kovan: 
     eth_feed: '0x9326BFA02ADD2366b30bacB125260Af641031331'
@@ -37,13 +35,21 @@ networks:
     eth_feed: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e'
     vrf: '0xb3dCcb4Cf7a26f6cf6B120Cf5A73875B7BBc655B'
     link: '0x01BE23585060835E02B77ef475b0Cc51aA1e0709'
-    keyhash: '0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311'
+    keyhash: &key_hash '0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311'
     fee: *link_fee
     verify: True
   development:
-    keyhash: '0x2ed0feb3e7fd2022120aa84fab1945545a9f2ffc9076fd6156fa96eaff4c1311'
+    keyhash: *key_hash
     fee: *link_fee
     verify: False
   ganachewin11:
-    verify: False 
+    verify: False
+  dev-fork: 
+    eth_feed: '0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419'
+    link: '0x514910771AF9Ca656af840dff83E8264EcF986CA'
+    vrf: '0xf0d54349aDdcf704F77AE15b96510dEA15cb7952'
+    keyhash: *key_hash
+    fee: *link_fee
+    verify: False
+    weth_token: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
     

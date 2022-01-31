@@ -22,10 +22,12 @@ def deploy_adv_nft(ntf_uri: Dict) -> Contract:
         config["networks"][network.show_active()]["keyhash"],
         config["networks"][network.show_active()]["fee"],
         {"from": acc},
+        publish_source=config["networks"][network.show_active()]["verify"],
     )
+    print("Deployed AdvancedNFT!")
     # tx.wait(1)
     fund_link(nft)
-    tx2 = nft.createNFT(ntf_uri, {"from": acc})
+    tx2 = nft.createNFT({"from": acc})
     tx2.wait(1)
     print('NFT createt! {} times minted.'.format(nft.tokenCount()))
 
@@ -41,4 +43,5 @@ def mintNFT():
 def main():
     """Main app"""
     nft_uri = "res/uri/goku.json"
-    deploy_nft(nft_uri)
+    nft, _ = deploy_adv_nft(nft_uri)
+    return nft

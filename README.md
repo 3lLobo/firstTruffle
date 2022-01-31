@@ -155,7 +155,7 @@ Here are some ERC standards:
 https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token
 `
 
-Deploy the NFT data on [IPFS](https://ipfs.io/) and link it through a URL in the URI, which is deployed on the blockchain.
+Deploy the NFT data on [IPFS](https://ipfs.io/) and link it through a URL in the URI, which is deployed on the blockchain. Use the [metadata template](https://gist.github.com/michielmulders/c325bfe87bb1b9e8684b22b6f8462362) for the NFT.
 
 ## Appendix
 
